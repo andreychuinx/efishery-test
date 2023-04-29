@@ -4,20 +4,23 @@ const app = express()
 const bodyParser = require('body-parser')
 
 const routes = require('./src/routers')
+const middlewares = require('./src/middlewares')
 
 app.use(bodyParser.json())
 
-app.get('/api', (req, res) => {
-  res.json({
-    test: 'test'
-  })
-})
+app.use('/api', routes)
 
 app.use((req, res, next) => {
   res.status(404).send('Page not found')
   next()
 })
 
-app.listen(3000, () => {
-  console.log('Server Started on port 3000')
-})
+const startServer = async () => {
+  const port = process.env.PORT || 3000;
+  app.listen(port, async () => {
+    await middlewares.checkUserDb()
+    console.log(`Server started on port ${port}`)
+  } )
+}
+
+startServer()
