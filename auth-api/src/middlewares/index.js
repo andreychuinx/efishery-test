@@ -1,4 +1,5 @@
 const fs = require('fs').promises
+const jwt = require('jsonwebtoken')
 const { dataSet } = require('../config/enum')
 
 const checkDataSet = async () => {
@@ -10,9 +11,9 @@ const checkDataSet = async () => {
     }
   }
   return;
-
 }
 
+
 module.exports = {
-  checkDataSet
+  checkDataSet,
 }

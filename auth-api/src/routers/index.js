@@ -6,5 +6,7 @@ const authController = new AuthController()
 
 Router.post('/register', authController.register)
 Router.post('/login', authController.login)
+Router.post('/check', authController.check)
+
 
 module.exports = Router;

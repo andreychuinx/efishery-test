@@ -17,6 +17,15 @@ module.exports = {
         resolve(token)
       })
     })
-  }
+  },
+  verifyJWT: async (token) => {
+  return new Promise((resolve, reject) => {
+    const newToken = token.split(' ')[1]
+    jwt.verify(newToken, process.env.JWT_SECRET, (err, decoded) => {
+      if (err) reject(err)
+      resolve(decoded)
+    })
+  })
+}
 
 }
