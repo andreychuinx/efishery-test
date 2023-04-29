@@ -1,0 +1,10 @@
+version: '1'
+services:
+  auth-api:
+    build: ./auth-api
+    ports:
+      - ${AUTH_PORT}:3000
+    container_name: auth-api
+    hostname: auth-api
+    env_file:
+      - .env

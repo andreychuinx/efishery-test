@@ -1,0 +1,4 @@
+/auth-api/node_modules
+/auth-api/src/databases
+/auth-api/.env
+.env
