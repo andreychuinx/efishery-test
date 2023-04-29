@@ -1,20 +1,18 @@
 const fs = require('fs').promises
+const { dataSet } = require('../config/enum')
 
-const checkUserDb = async () => {
-  try {
-    await fs.readFile('./src/databases/User.json', 'utf-8')
-  } catch (err) {
-    console.log(err.code)
-    if (err.code === 'ENOENT') {
-      console.log('kesini')
-      await fs.writeFile('./src/databases/User.json', '{}')
+const checkDataSet = async () => {
+  for (let dataName in dataSet) {
+    try {
+      await fs.access(`./src/databases/${dataSet[dataName]}.json`)
+    } catch (err) {
+      await fs.writeFile(`./src/databases/${dataSet[dataName]}.json`, '[]')
     }
-  } finally {
-    return;
   }
+  return;
 
 }
 
 module.exports = {
-  checkUserDb
+  checkDataSet
 }

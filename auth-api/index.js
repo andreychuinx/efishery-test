@@ -18,8 +18,9 @@ app.use((req, res, next) => {
 const startServer = async () => {
   const port = process.env.PORT || 3000;
   app.listen(port, async () => {
-    await middlewares.checkUserDb()
-    console.log(`Server started on port ${port}`)
+    await middlewares.checkDataSet()
+    /*no-console*/
+    console.log(`Server started on port ${port}`)// eslint-disable-line
   } )
 }
 
