@@ -1,3 +1,5 @@
+const jwt = require('jsonwebtoken')
+
 module.exports = {
   generatePassword: (length) => {
     const charset = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
@@ -7,5 +9,14 @@ module.exports = {
       password += charset[randomIndex];
     }
     return password;
+  },
+  generateJWT: async (data) => {
+    return new Promise((resolve, reject) => {
+      jwt.sign(data, process.env.JWT_SECRET, (err, token) => {
+        if (err) reject(err);
+        resolve(token)
+      })
+    })
   }
+
 }
