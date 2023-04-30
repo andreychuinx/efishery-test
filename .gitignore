@@ -2,3 +2,4 @@
 /auth-api/src/databases
 /auth-api/.env
 .env
+/fetch-api/venv

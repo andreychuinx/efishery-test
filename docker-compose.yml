@@ -1,10 +1,18 @@
 version: '1'
 services:
-  auth-api:
-    build: ./auth-api
+  # auth-api:
+  #   build: ./auth-api
+  #   ports:
+  #     - ${AUTH_PORT}:3000
+  #   container_name: auth-api
+  #   hostname: auth-api
+  #   env_file:
+  #     - .env
+  fetch-api:
+    build: ./fetch-api
     ports:
-      - ${AUTH_PORT}:3000
-    container_name: auth-api
-    hostname: auth-api
+      - ${AUTH_PORT}:3001
+    container_name: fetch-api
+    hostname: fetch-api
     env_file:
       - .env
