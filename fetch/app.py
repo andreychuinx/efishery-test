@@ -1,6 +1,6 @@
 from flask import Flask, jsonify
 from src.middlewares.checkAuth import checkAuth
-from src.controllers.controller import getData
+from src.controllers.controller import getData, aggregate
 from dotenv import load_dotenv
 
 load_dotenv()
@@ -20,6 +20,14 @@ def price():
     return getData()
 # app.config["DEBUG"] = True
 # Create some test data for our catalog in the form of a list of dictionaries.
+
+@app.route('/api/aggregate', methods= ['GET'])
+@cache.cached(timeout=600)
+def getAggregate():
+    check = checkAuth()
+    if 'error' in check:
+       return jsonify({'Error': 'Unauthorized'}), 401
+    return aggregate()
 
 if __name__ == '__main__':
     app.run(host="0.0.0.0", port=3001)
