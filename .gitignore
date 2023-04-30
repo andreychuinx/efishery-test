@@ -2,4 +2,5 @@
 /auth-api/src/databases
 /auth-api/.env
 .env
-/fetch-api/venv
+/fetch/venv
+__pycache__/

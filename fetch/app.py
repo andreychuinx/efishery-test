@@ -1,0 +1,25 @@
+from flask import Flask, jsonify
+from src.middlewares.checkAuth import checkAuth
+from src.controllers.controller import getData
+from dotenv import load_dotenv
+
+load_dotenv()
+
+from flask_caching import Cache
+
+app = Flask(__name__)
+app.secret_key = 'TEST'
+cache = Cache(app, config={'CACHE_TYPE': 'simple'})
+
+@app.route('/api/price', methods= ['GET'])
+@cache.cached(timeout=600)
+def price():
+    check = checkAuth()
+    if 'error' in check:
+       return jsonify({'Error': 'Unauthorized'}), 401
+    return getData()
+# app.config["DEBUG"] = True
+# Create some test data for our catalog in the form of a list of dictionaries.
+
+if __name__ == '__main__':
+    app.run(host="0.0.0.0", port=3001)
