@@ -8,3 +8,11 @@ services:
     hostname: auth-api
     env_file:
       - .env
+  fetch-api:
+    build: ./fetch
+    ports:
+      - ${FETCH_PORT}:3001
+    container_name: fetch
+    hostname: fetch
+    env_file:
+      - .env
