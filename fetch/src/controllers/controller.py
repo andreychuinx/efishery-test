@@ -29,7 +29,13 @@ def aggregate():
             return result
         else:
             newData = acc[0]
-            if (newData['tgl_parsed'] is not None):
+            def checkNotNull(dt):
+                for k, v in dt.items():
+                    if v is None:
+                        return False
+                return True
+            
+            if (checkNotNull(newData) is True):
                 dateParsed = moment.date(newData['tgl_parsed'])
                 week = datetime(dateParsed.year, dateParsed.month, dateParsed.day).isocalendar().week
                 newObj = {
