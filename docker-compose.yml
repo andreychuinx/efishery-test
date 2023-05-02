@@ -4,10 +4,17 @@ services:
     build: ./auth-api
     ports:
       - ${AUTH_PORT}:3000
+    expose:
+      - "3000"
     container_name: auth-api
     hostname: auth-api
     env_file:
       - .env
+    networks:
+      default:
+          aliases:
+              - auth-api.dev
+
   fetch-api:
     build: ./fetch
     ports:
