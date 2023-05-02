@@ -3,7 +3,8 @@ from src.middlewares.checkAuth import checkAuth
 from src.controllers.controller import getData, aggregate
 from dotenv import load_dotenv
 import os
-load_dotenv()
+
+load_dotenv('../.env')
 
 from flask_caching import Cache
 
