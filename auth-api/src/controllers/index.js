@@ -32,7 +32,7 @@ class AuthController {
       let data = await readFile(User)
       const checkPhone = data.findIndex(dt => dt.phone === body.phone)
       if (checkPhone === -1) {
-        let result = { ...body, date_registry: new Date(), password: generatePassword(8) }
+        let result = { ...body, date_registry: new Date(), password: generatePassword(4) }
         data.push(result)
         await writeFile(User, data)
         res.status(200).json(result)
