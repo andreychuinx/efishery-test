@@ -2,7 +2,7 @@ from flask import Flask, jsonify
 from src.middlewares.checkAuth import checkAuth
 from src.controllers.controller import getData, aggregate
 from dotenv import load_dotenv
-
+import os
 load_dotenv()
 
 from flask_caching import Cache
@@ -36,4 +36,4 @@ def getAggregateAuth():
     return getAggregate()
 
 if __name__ == '__main__':
-    app.run(host="0.0.0.0", port=3001)
+    app.run(host="0.0.0.0", port=os.getenv('FETCH_PORT'))

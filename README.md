@@ -10,7 +10,14 @@ Then change into the `efishery-test` folder:
 ```bash
 cd efishery-test
 ```
-
+create .env
+```bash
+AUTH_PORT=3000
+FETCH_PORT=3001
+JWT_SECRET=test
+API_KEY_CONVERTER={YOUR_API_KEY_CONVERTER}
+```
+you can take API KEY CONVERTER from freecurrencyapi.com
 Then run docker-compose
 ```bash
 docker-compose up
@@ -36,5 +43,6 @@ docker-compose up
            |     Data       |    |   json file    |                  
            |    Storage     |    +----------------+                  
            +----------------+                      
-                                                  
-```
+```                                      
+## API AVAILABLES
+you can download insomnia collection on this repo
